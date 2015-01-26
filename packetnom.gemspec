@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
 
   s.name        = 'packetnom'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.date        = '2015-01-26'
   s.summary     = "PacketNom, nom, nom, nom"
   s.description = "PacketNom - Best way to view, consume and replay packets with ruby"
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
     "lib/packet/eth.rb",
     "lib/packet/ip.rb",
     "lib/packet/tcp.rb",
+    "lib/packet/udp.rb",
   ]
 
   s.add_runtime_dependency 'ffi-pcap'

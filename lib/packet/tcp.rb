@@ -18,9 +18,7 @@ module Packetnom
             attr_accessor :uptr
 
             # Initialize the packet
-            def initialize( bytes )
-                @packet = bytes
-                
+            def initialize( bytes )               
                 @src_port = bytes[34..35].join().to_i(16).to_s(10).to_i
                 @dst_port = bytes[36..37].join().to_i(16).to_s(10).to_i
                 

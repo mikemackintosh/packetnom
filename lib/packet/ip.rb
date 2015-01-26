@@ -19,9 +19,7 @@ module Packetnom
             attr_accessor :dst
 
             # Initialize the packet
-            def initialize( bytes )
-                @packet = bytes
-                
+            def initialize( bytes )                
                 @version = bytes[14].split(//)[0]
                 @ihl = bytes[14].split(//)[1]
                 @ds = bytes[15]

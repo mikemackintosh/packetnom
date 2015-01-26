@@ -10,14 +10,11 @@ module Packetnom
             attr_accessor :type
 
             # Initialize the packet
-            def initialize( bytes )
-                @packet = bytes
-                
+            def initialize( bytes )               
                 # Layer 2
                 @dst = bytes[0..5].join(':')
                 @src = bytes[6..11].join(':')
                 @type = bytes[12..13].join() # http://en.wikipedia.org/wiki/EtherType
-   
             end
 
             def type
