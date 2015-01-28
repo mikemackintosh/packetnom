@@ -10,7 +10,7 @@ module Packetnom
             attr_accessor :type
 
             # Initialize the packet
-            def initialize( bytes )               
+            def initialize( bytes )       
                 # Layer 2
                 @dst = bytes[0..5].join(':')
                 @src = bytes[6..11].join(':')
@@ -20,6 +20,7 @@ module Packetnom
             def type
                types = {
                     "0800" => "ip",
+                    "86dd" => "ipv6"
                 }
 
                 types[ @type ]
