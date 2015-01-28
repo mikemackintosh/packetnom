@@ -23,8 +23,8 @@ module Packetnom
             alias_method  :sport, :src_port
             alias_method  :dest_port, :dst_port
             alias_method  :dport, :dst_port
-            alias_method :len, :length
-            alias_method :checksum, :sum
+            alias_method  :len, :length
+            alias_method  :checksum, :sum
             
         end
 

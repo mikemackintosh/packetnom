@@ -2,7 +2,7 @@ module Packetnom
     
     class Packet
         
-        class Ip
+        class IPv4
 
             # Attributes
             attr_accessor :version
@@ -40,6 +40,9 @@ module Packetnom
             alias_method :length, :len
             alias_method :checksum, :sum
 
+            def protonum
+                @proto.to_i
+            end
             def proto
                 protocol( @proto.to_i )
             end
