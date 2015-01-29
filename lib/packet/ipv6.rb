@@ -2,7 +2,7 @@ module Packetnom
     
     class Packet
         
-        class IPv4
+        class IPv6
 
             # Attributes
             attr_accessor :version
@@ -19,24 +19,22 @@ module Packetnom
             attr_accessor :dst
 
             # Initialize the packet
-            def initialize( bytes )
-                offset = Hash[bytes[0..24].map.with_index.to_a]['45']
+            def initialize( bytes )                
+                @version = bytes[14].split(//)[0]
+                @ihl = bytes[14].split(//)[1]
+                @ds = bytes[15]
+                @len = bytes[16..17].join().to_i(16)
+                @id = bytes[18..19].join()
 
-                @version = bytes[offset].split(//)[0]
-                @ihl = bytes[offset].split(//)[1]
-                @ds = bytes[offset+1]
-                @len = bytes[offset+2..offset+3].join().to_i(16)
-                @id = bytes[offset+4..offset+5].join().to_i(16)
+                @flags = bytes[20].split(//)[0].to_i(16) #todo
+                @offset = "#{bytes[20].split(//)[1]}#{bytes[21]}".to_i(16) #todo
 
-                options = bytes[offset+6..offset+7].join().to_i(16).to_s(2).rjust(16, '0')
-                @flags = options[0..2].to_i(2).to_s(10)
-                @offset = options[3..15].to_i(2).to_s(10)
-
-                @ttl = bytes[offset+8].to_i(16)
-                @proto = bytes[offset+9].to_i(16)
-                @sum = bytes[offset+10..offset+11].join()
-                @src = bytes[offset+12..offset+15].map{|octet| octet.to_i(16).to_s(10)}.join('.')
-                @dst = bytes[offset+16..offset+19].map{|octet| octet.to_i(16).to_s(10)}.join('.')
+                @ttl = bytes[22].to_i(16)
+                @proto = bytes[23].to_i(16)
+                @sum = bytes[24..25].join().to_i(16)
+                @src = bytes[26..29].map{|octet| octet.to_i(16).to_s(10)}.join('.')
+                @dst = bytes[30..33].map{|octet| octet.to_i(16).to_s(10)}.join('.')
+               
             end
 
             alias_method :length, :len

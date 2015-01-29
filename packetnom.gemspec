@@ -2,8 +2,8 @@
 Gem::Specification.new do |s|
 
   s.name        = 'packetnom'
-  s.version     = '0.0.3'
-  s.date        = '2015-01-26'
+  s.version     = '0.0.5'
+  s.date        = '2015-01-28'
   s.summary     = "PacketNom, nom, nom, nom"
   s.description = "PacketNom - Best way to view, consume and replay packets with ruby"
   s.authors     = ["Mike Mackintosh"]
@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
   s.files       = [
     "lib/packetnom.rb", 
     "lib/packet/eth.rb",
-    "lib/packet/ip.rb",
+    "lib/packet/ipv4.rb",
+#    "lib/packet/ipv6.rb",
     "lib/packet/tcp.rb",
     "lib/packet/udp.rb",
   ]
