@@ -13,5 +13,5 @@ gem build packetnom.gemspec
 gem push packetnom*.gem
 
 # Tag this version, and push
-git tag -v $gemver
+git tag $gemver
 git push --tags
